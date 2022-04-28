@@ -1,0 +1,13 @@
+docker-compose.yml
+
+api/.cache
+api/.yarn
+api/node_modules
+api/Dockerfile
+
+web/.cache
+web/.config
+web/.next
+web/.yarn
+web/node_modules
+web/Dockerfile
