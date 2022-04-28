@@ -4,6 +4,7 @@ api/.cache
 api/.yarn
 api/node_modules
 api/Dockerfile
+api/dist
 
 web/.cache
 web/.config
