@@ -8,6 +8,7 @@ api/dist
 api/.ash_history
 api/.npm
 api/.yarnrc
+api/config/*
 
 web/.cache
 web/.config
