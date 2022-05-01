@@ -12,11 +12,9 @@ export class AuthService {
 
     async regist(user: User) {
         try {
-            console.log(user);
             await this.userRepository.save(user);
             return true;
         } catch (error) {
-            console.log(error);
             return false;
         }
     }

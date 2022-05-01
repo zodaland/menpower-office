@@ -12,7 +12,6 @@ export class AuthController {
 
     @Post()
     regist(@Body('user') inputUser: InputUser) {
-        console.log(inputUser.id);
         const user: User = plainToClass(User, inputUser);
         return this.authService.regist(user);
     }
