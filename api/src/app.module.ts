@@ -7,6 +7,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
 
+import { AuthModule } from './auth/auth.module';
+
 @Module({
     imports: [
         TypeOrmModule.forRootAsync({
@@ -19,9 +21,10 @@ import { ConfigService } from './config/config.service';
                 username: configService.get('DB_USER'),
                 password: configService.get('DB_PASSWORD'),
                 database: configService.get('DB_DATABASE'),
-                entities: [__dirname + '**/*.entity(.ts}'],
+                entities: [__dirname + '/**/*.entity{.ts,.js}'],
             }),
         }),
+        AuthModule
     ],
     controllers: [AppController],
     providers: [AppService],
