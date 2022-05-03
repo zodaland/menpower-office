@@ -3,10 +3,11 @@ import { Entity, Column, PrimaryColumn } from 'typeorm';
 @Entity()
 export class User {
     @PrimaryColumn({
-        type: 'int',
+        type: 'varchar',
+        length: 11,
         unsigned: true,
     })
-    id: number;
+    id: string;
 
     @Column({
         type: 'varchar',
