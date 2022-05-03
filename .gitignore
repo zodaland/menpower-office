@@ -9,6 +9,7 @@ api/.ash_history
 api/.npm
 api/.yarnrc
 api/config/*
+api/coverage
 
 web/.cache
 web/.config
