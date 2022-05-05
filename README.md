@@ -1,6 +1,7 @@
-### 인력 사무소 프로젝트
+# yesgada
+비대면 인력 사무소 애플리케이션 입니다.
 
-### 테스트 URL
-
-* api : https://workapi.test.zodaland.com
-* web : https://work.test.zodaland.com
+# URL
+### Development
+- API : https://workapi.test.zodaland.com
+- WEB : https://work.test.zodaland.com
