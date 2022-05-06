@@ -12,9 +12,11 @@ export class AuthController {
     constructor(private readonly authService: AuthService) {}
 
     @Post('/regist')
-    regist(@Body('user') inputUser: InputUser) {
+    async regist(@Body('user') inputUser: InputUser) {
         const user: User = plainToClass(User, inputUser);
-        return this.authService.regist(user);
+        const isCreated = await this.authService.regist(user);
+        if (!isCreated) throw new InternalServerErrorException();
+        return true;
     }
 
     @UseGuards(LocalAuthGuard)

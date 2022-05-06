@@ -71,4 +71,21 @@ describe('AuthController', () => {
         });
 
     });
+
+    describe('regist', () => {
+        it('should 500 error if authService.save return false', async () => {
+            const request = { id: '01012341234', pw: 'test' };
+            jest.spyOn(authService, 'regist').mockResolvedValue(false);
+
+            await expect(async () => {
+                await authController.regist(request)
+            }).rejects.toThrow();
+        });
+        it('should return true', async () => {
+            const request = { id: '01012341234', pw: 'test' };
+            jest.spyOn(authService, 'regist').mockResolvedValue(true);
+
+            expect(await authController.regist(request)).toBe(true);
+        });
+    });
 });
