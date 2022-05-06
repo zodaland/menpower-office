@@ -15,18 +15,14 @@ export class AuthService {
         private readonly userService: UserService,
     ) {}
 
-    async regist(user: User): Promise<boolean> {
-        try {
-            await this.userService.save(user);
-            return true;
-        } catch (error) {
-            return false;
-        }
+    regist(user: User): Promise<boolean> {
+        return this.userService.save(user);
     }
 
     login(user: User): ResultWithStatus {
         const data = this.jwtService.sign({ user });
-        return { status: 200, data };
+        if (typeof data !== 'string') return { status: 500 };
+        else return { status: 200, data };
     }
 
     async validateUser(user: User): Promise<ResultWithStatus> {

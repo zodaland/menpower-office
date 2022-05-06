@@ -52,9 +52,9 @@ describe('AuthService', () => {
         it('should be defined', () => {
             expect(authService.regist).toBeDefined();   
         });
-        it('should return false if error occur', async () => {
+        it('should return false', async () => {
             const user = new User();
-            jest.spyOn(userService, 'save').mockRejectedValue(null);
+            jest.spyOn(userService, 'save').mockResolvedValue(false);
 
             const result = await authService.regist(user);
             expect(userService.save).toBeCalled();
@@ -62,7 +62,7 @@ describe('AuthService', () => {
         });
         it('should return true', async () => {
             const user = new User();
-            jest.spyOn(userService, 'save').mockResolvedValue(null);
+            jest.spyOn(userService, 'save').mockResolvedValue(true);
 
             const result = await authService.regist(user);
             expect(userService.save).toBeCalled();
@@ -73,6 +73,15 @@ describe('AuthService', () => {
     describe('login', () => {
         it('should be defined', () => {
             expect(authService.login).toBeDefined();   
+        });
+        it('should return jwtService.sign throw error', () => {
+            const user = new User();
+            const returnValue = { status: 500 };
+            jwtService.sign = jest.fn().mockReturnValue(new Error());
+
+            const result = authService.login(user);
+            expect(jwtService.sign).toBeCalled();
+            expect(result).toEqual(returnValue);
         });
         it('should return status 200 and data', () => {
             const user = new User();
