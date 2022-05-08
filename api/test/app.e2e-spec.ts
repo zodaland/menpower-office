@@ -24,6 +24,8 @@ describe('AppController (e2e)', () => {
             disableErrorMessages: false,
         }));
         await app.init();
+
+        jest.restoreAllMocks();
     });
 
     describe('Auth', () => {
